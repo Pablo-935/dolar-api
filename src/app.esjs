@@ -1,5 +1,4 @@
 import { Terminal } from "@es-js/terminal"
-import { tiza } from "@es-js/tiza"
 import { obtenerJson } from "https://desarrollo-aplicaciones.vercel.app/2024/code/obtener-json.js"
 import { validarSecreto } from "https://desarrollo-aplicaciones.vercel.app/2024/code/validar-secreto.js"
 
@@ -27,7 +26,7 @@ async function inicio() {
 
 async function mostrarCotizacion() {
   const dolarBlue = await obtenerJson('https://dolarapi.com/v1/dolares/blue')
-  Terminal.escribir(Terminal.centrar(tiza.negrita("Cotización Dolar Blue")))
+  Terminal.escribir(Terminal.centrar("Cotización Dolar Blue"))
 
   Terminal.log("Dolar: $" + dolarBlue.nombre)  
   Terminal.log("Precio Venta: $" + dolarBlue.venta)  
