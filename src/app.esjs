@@ -25,14 +25,18 @@ async function inicio() {
 }
 
 async function mostrarCotizacion() {
-  const dolarBlue = await obtenerJson('https://dolarapi.com/v1/dolares/blue')
-  Terminal.escribir(Terminal.centrar("Cotización Dolar Blue"))
-
-  Terminal.log("Dolar: $" + dolarBlue.nombre)  
-  Terminal.log("Precio Venta: $" + dolarBlue.venta)  
-  Terminal.log("Precio Compra: $" + dolarBlue.compra)  
-  Terminal.log("Promedio de Venta y Compra: $" + (dolarBlue.venta + dolarBlue.compra) / 2)  
-  Terminal.log("Fecha Cotización: " + dolarBlue.fechaActualizacion)  
+  const dolarBlue = await obtenerJson("https://dolarapi.com/v1/dolares/blue")
+  Terminal.escribir(Terminal.centrar("Cotización del Dólar Blue en Argentina"))
+  Terminal.log("Tipo de Dólar: " + dolarBlue.nombre)
+  Terminal.log("Precio de Venta: $" + dolarBlue.venta)
+  Terminal.log("Precio de Compra: $" + dolarBlue.compra)
+  Terminal.log(
+    "Promedio de Venta y Compra: $" + (dolarBlue.venta + dolarBlue.compra) / 2
+  )
+  const fecha = dolarBlue.fechaActualizacion
+  const fechaDate = new Date(fecha)
+  const fechaCotizacion = fechaDate.toLocaleString("es-AR", { hour12: false })
+  Terminal.log("Fecha de Cotización: " + fechaCotizacion)
 }
 
 inicio()
